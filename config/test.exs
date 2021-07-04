@@ -6,10 +6,10 @@ use Mix.Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :memery, Memery.Repo,
-  username: "memery",
-  password: "GLTvuHbSMW3AMnhWfd9aK8CMGv",
+  username: System.get_env("TEST_DATABASE_USER", "memery"),
+  password: System.get_env("TEST_DATABASE_PASS", "GLTvuHbSMW3AMnhWfd9aK8CMGv"),
   database: "memery_test#{System.get_env("MIX_TEST_PARTITION")}",
-  hostname: "enceladus",
+  hostname: System.get_env("TEST_DATABASE_HOST", "enceladus"),
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
