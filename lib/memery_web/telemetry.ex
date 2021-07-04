@@ -1,4 +1,8 @@
 defmodule MemeryWeb.Telemetry do
+  @moduledoc """
+  Metrics for for Elixir, Phoenix and the database
+  """
+
   use Supervisor
   import Telemetry.Metrics
 

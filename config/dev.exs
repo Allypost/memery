@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :memery, Memery.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "memery",
+  password: "GLTvuHbSMW3AMnhWfd9aK8CMGv",
   database: "memery_dev",
-  hostname: "localhost",
+  hostname: "enceladus",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

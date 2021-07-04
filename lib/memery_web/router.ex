@@ -36,7 +36,7 @@ defmodule MemeryWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: MemeryWeb.Telemetry
+      live_dashboard "/dashboard", ecto_repos: [Memery.Repo], metrics: MemeryWeb.Telemetry
     end
   end
 end

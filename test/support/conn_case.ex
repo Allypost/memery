@@ -15,6 +15,8 @@ defmodule MemeryWeb.ConnCase do
   this option is not recommended for other databases.
   """
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   use ExUnit.CaseTemplate
 
   using do
@@ -32,10 +34,10 @@ defmodule MemeryWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Memery.Repo)
+    :ok = Sandbox.checkout(Memery.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Memery.Repo, {:shared, self()})
+      Sandbox.mode(Memery.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

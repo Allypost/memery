@@ -20,7 +20,7 @@ defmodule Memery.MixProject do
   def application do
     [
       mod: {Memery.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end
 
@@ -44,7 +44,10 @@ defmodule Memery.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:ecto_psql_extras, "~> 0.2"},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:git_hooks, "~> 0.4.0", only: [:test, :dev], runtime: false}
     ]
   end
 
