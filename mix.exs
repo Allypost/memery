@@ -10,6 +10,7 @@ defmodule Memery.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      dialyzer: dialyzer(),
       deps: deps()
     ]
   end
@@ -47,7 +48,16 @@ defmodule Memery.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ecto_psql_extras, "~> 0.2"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 0.5.0", only: [:dev], runtime: false},
       {:git_hooks, "~> 0.4.0", only: [:test, :dev], runtime: false}
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"},
+      plt_add_deps: :transitive
     ]
   end
 
